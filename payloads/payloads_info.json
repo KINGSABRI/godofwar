@@ -1,0 +1,30 @@
+{
+  "cmd_get": {
+    "desc"  : "Command execution via web interface",
+    "os"    : "any",
+    "conf"  : {},
+    "url"   : "http://host/cmd.jsp?cmd=whoami",
+    "ref"   : ["https://github.com/danielmiessler/SecLists/tree/master/Payloads/laudanum-0.8/jsp"]
+  },
+  "filebrowser": {
+    "desc"  : "Remote file browser, upload, download, unzip files and native command execution",
+    "os"    :  "any",
+    "conf"  : {},
+    "url"   : "http://host/filebrowser.jsp",
+    "ref"   : ["http://www.vonloesch.de/filebrowser.html"]
+  },
+  "bind_shell": {
+    "desc"  : "TCP bind shell",
+    "os"    : "any",
+    "conf"  : {"port": 4444},
+    "url"   : "http://host/reverse-shell.jsp",
+    "ref"   : ["Metasploit - msfvenom -p java/jsp_shell_bind_tcp"]
+  },
+  "reverse_shell_ui": {
+    "desc"  : "TCP reverse shell with a UI to set LHOST and LPORT from browser.",
+    "os"    : "windows",
+    "conf"  : {"host": "attacker", "port": 4444},
+    "url"   : "http://host/reverse_shell_ui.jsp",
+    "ref"   : []
+  }
+}

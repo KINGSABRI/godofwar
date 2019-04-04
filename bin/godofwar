@@ -1,0 +1,80 @@
+#!/usr/bin/env ruby
+#
+# GodOfWare - A command-line tool to generate war payloads for penetration testing / red teaming purposes.
+# @Author: KING SABRI - @KINGSABRI
+#
+lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'godofwar'
+
+options = OpenStruct.new(payload: nil, host: nil, port: nil,
+                         list: false, output: nil, version: false)
+
+option_parser = OptionParser.new
+option_parser.banner = "#{"GodOfWar".bold} - Malicious Java WAR builder."
+option_parser.set_summary_indent '   '
+option_parser.separator "\nHelp menu:".underline
+option_parser.on('-p', '--payload PAYLOAD',
+                 'Generates war from one of the available payloads.',
+                 "\t(check -l/--list)"
+) {|v| options.payload = v}
+
+option_parser.on('-H', '--host IP_ADDR',
+                 'Local or Remote IP address for the chosen payload',
+                 "\t(used with -p/--payload)"
+) {|v| options.host = v}
+option_parser.on('-P', '--port PORT', Integer,
+                 'Local or Remote Port for the chosen payload',
+                 "\t(used with -p/--payload)"
+) {|v| options.port = v}
+option_parser.on('-o', "--output [FILE]",
+                 'Output file and the deployment name.',
+                 "\t(default is the payload original name. check '-l/--list')") do |v|
+  options.output = v
+end
+option_parser.on('-l', '--list', 'list all available payloads.') {|v| options.list = v}
+# option_parser.on('-v', '--version', 'Check current and latest version') { latest_version }
+option_parser.on('-h', '--help', 'Show this help message') {puts GodOfWar::Utils.banner , option_parser; exit!}
+
+begin
+  option_parser.parse!(ARGV)
+  payloads = GodOfWar::Payloads.new
+
+  case
+  when options.list
+    puts payloads.list_tree
+  when options.payload
+    payload = payloads.find_payload(options.payload)
+
+    if payload.nil?
+      puts "Unknown Payload: check available payloads using '-l/--list' option.".warn
+      exit!
+    end
+
+    GodOfWar::Builder.new(payload) do |build|
+      build.output = options.output
+      build.directory_structure
+      build.web_xml
+      build.manifest_mf
+      build.set_payload(options.host, options.port)
+      build.war
+    end
+
+  else
+    puts GodOfWar::Utils.banner
+    puts option_parser
+  end
+rescue OptionParser::MissingArgument => e
+  e.args.each { |arg| puts "#{e.reason.capitalize} for '#{arg}' option.".error }
+  puts option_parser
+rescue OptionParser::InvalidOption => e
+  puts "#{e}".error
+  puts option_parser
+rescue Exception => e
+  puts "Unknown Exception".error
+  puts 'Please report the issue at: https://github.com/KINGSABRI/godofwar/issues'.warn
+  puts e.full_message
+  puts "#{e}".error
+end
+
