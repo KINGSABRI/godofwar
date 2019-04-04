@@ -2,54 +2,44 @@
 A command-line tool to generate war payloads for penetration testing / red teaming purposes, written in ruby.
 
 ```
-                                `           
-                               :hho/.`      
-                              -hdddddhs/.   
-                             .hddddddddy`   
-                            .hddddddddh.    
-                           `yddddddddh.     
-                          `sddddddddh-      
-                         `sddddddddd:       
-                         oddddddddd:        
-                        +ddddddddd/         
-             `o-       /ddddddddd+          
-            .y+       /dddddddddo`          
-           .h/       :dddddddddd+`          
-   .      .h/       `yddddddddddd+`         
-  `dy/.  `y+         /ddddddddddddo`  `....`
-   hMMNy+ss          `yddddddddddddo:ohmNNNs
-   +MMMMMMd+-`        /dddddmmmmNNMMMMMMMMm/
-   +MMMMMMMMNdo:`     +MNNNMMMMMMMMNmNMMMm.
- `oMMNosMMMmdNMMNy:/.`/omMMMMNomMMN+`/NMNo
-.hMMMms+ydh+/yNNNNs:    `yNMMo+odmhydMMN+ 
-/+//::m/-:////:--+ `      ./NMMMMMMMMNmds 
-     +y          ` o.  .`   `:yNNmmmddddd+
-    `m-            d-  hs     `ydddddddddd: 
-    /h        :yy/`h  .omy: -` .hdddddddddh.
-    h/       /h-.:o-    +y  -h/ -ddddddddddy
-   `m`       /`o/  `    `` .`.d+ /dddddho:.`
-   -m         .+dyo`     .ys` `o+`+dddd-    
-   .+          .+s:///::`-.     `  ydds     
-                 `` ````           +dd-     
-             -:-.`        `.`      -do      
-            /NNddddhysyhddddm/     `h.      
-          `odo-``..:/o+:-.../h+`    -
-          :-`   ---------.   `:/`    
-               `NNNNNNNNNN     ``    
-               `NNNNMMMMNN       
-                ----hMMs-.       
-                   `hMM+          ``
-        `-..```  ./hMMM/ ``   `.:oh-
-        .ymmddhhymMMMMMyyds.:shmMMo 
-         `sNMMMMMMMMMMMMMMMNMMMMMy` 
-           /NMMMMMMMMMMMMMMMMMMMm.  
-            -dMMMMMMMMMMMMMMMMNm:   
-             .yMMMMMMMMMMMMMMo-`    
-              `oNMMMMMMMMMMNNy      
-                :+NMMNNmho/-`       
-                    /o/-`
-                                                         
-
+                              .
+                             hhh              
+                            hhhhhhh           
+                           hhhhhhhh        
+                          hhhhhhhh+        
+                         hhhhhhhh'           
+                        hhhhhhhh.            
+                       hhhhhhhhh             
+        ..--          hhhhhhhhh             
+      -sh/..  +.     hhhhhhhhh:              
+      /+/:-/+ss-`   hhhhhhhhhh:               
+      /MMM`ss:``.`  hhhhhhhhhh:              
+     .MMMMM:        hhhhhhhhhhhhhhhhh:       
+     MMMMMMM:        hhhhhhhhhhhhhhhh:      
+     MMMMMMMMMMMMM:  hhhhhhhhhhhhhhhh`       
+    :NNm:odh/oMMMNs. hhhhhhhhhhhhhhhh`       
+   ./:`smdo+oos++-    `++sNMMMMMNmh+         
+      .-y-`     ` :.  /   -dmddhhhhh-        
+       o/-     `//o/ /M/   `+hhhhhhhh`       
+      /o     :yosmy   +y  .`.hhhhhhhho       
+      +`     /../.:      `.y::hhhhhs:`       
+       `      `+yys`   .sy` /oohhy:          
+                `/:s/-``     `.hh`           
+               ..`     `       y+            
+            .hNNmmNdymmmmds`   :-            
+            hs.   ``..    :y-  `             
+               -hhmNmddm+   .                
+               `NMMMMMMm                     
+                ` `oMMy                      
+            `.     /Md-      :o  
+           MMMMMMMMMMMMMMMMMMM:             
+            MMMMMMMMMMMMMMMMMM:              
+             MMMMMMMMMMMMMMMMM               
+              MMMMMMMMMMMMMMM.               
+              `MMMMMMMMMMMMM.                 
+                :sNMMMNMdo:                  
+                  ``+m:/-                    
+                     `                                  
 GodOfWar - Malicious Java WAR builder.
 ```
 
