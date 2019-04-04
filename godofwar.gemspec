@@ -20,8 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'rubyzip'
-  spec.add_dependency 'tty-prompt'
-  spec.add_dependency 'tty-file'
 
   spec.metadata["homepage_uri"]    = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/KINGSABRI/godofwar"

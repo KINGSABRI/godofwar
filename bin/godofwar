@@ -3,9 +3,6 @@
 # GodOfWare - A command-line tool to generate war payloads for penetration testing / red teaming purposes.
 # @Author: KING SABRI - @KINGSABRI
 #
-lib = File.expand_path("../../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-
 require 'godofwar'
 
 options = OpenStruct.new(payload: nil, host: nil, port: nil,
