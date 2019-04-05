@@ -88,7 +88,7 @@ module GodOfWar
         payload_raw = File.read(payload_file)
       else
         host = host.nil? ? @payload.conf["host"] : host
-        port = port.nil? ? @payload.conf["host"] : port
+        port = port.nil? ? @payload.conf["port"] : port
         payload_raw = File.read(payload_file)
                           .sub('HOSTHOST', "#{host}").sub('PORTPORT', "#{port}")
       end
