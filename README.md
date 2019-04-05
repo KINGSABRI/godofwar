@@ -139,7 +139,7 @@ After deployment, you can visit your shell on (http://host:8080/puppy/puppy.jsp)
 4. Push to the branch (git push origin my-new-feature).
 5. Create a new Pull Request.
 
-### Add More Backdoor
+### Add More Backdoors
 To contribute by adding more backdoors:
 1. create a new folder under `payloads` directory.
 2. put your `jsp` file under the newly created directory (make it the same directory name).
