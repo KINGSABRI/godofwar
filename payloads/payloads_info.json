@@ -21,10 +21,17 @@
     "ref"   : ["Metasploit - msfvenom -p java/jsp_shell_bind_tcp"]
   },
   "reverse_shell_ui": {
-    "desc"  : "TCP reverse shell with a UI to set LHOST and LPORT from browser.",
+    "desc"  : "TCP reverse shell with a HTML form to set LHOST and LPORT from browser.",
     "os"    : "windows",
     "conf"  : {"host": "attacker", "port": 4444},
     "url"   : "http://host/reverse_shell_ui.jsp",
+    "ref"   : []
+  },
+  "reverse_shell": {
+    "desc"  : "TCP reverse shell. LHOST and LPORT are hardcoded",
+    "os"    : "any",
+    "conf"  : {"host": "attacker", "port": 4444},
+    "url"   : "http://host/reverse_shell.jsp",
     "ref"   : []
   }
 }
