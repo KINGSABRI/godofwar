@@ -22,7 +22,7 @@
   },
   "reverse_shell_ui": {
     "desc"  : "TCP reverse shell with a HTML form to set LHOST and LPORT from browser.",
-    "os"    : "windows",
+    "os"    : "any",
     "conf"  : {"host": "attacker", "port": 4444},
     "url"   : "http://host/reverse_shell_ui.jsp",
     "ref"   : []
