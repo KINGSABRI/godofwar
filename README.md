@@ -133,8 +133,21 @@ After deployment, you can visit your shell on (http://host:8080/puppy/puppy.jsp)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/godofwar.
+1. Fork it ( https://github.com/KINGSABRI/godofwar/fork ).
+2. Create your feature branch (git checkout -b my-new-feature).
+3. Commit your changes (git commit -am 'Add some feature').
+4. Push to the branch (git push origin my-new-feature).
+5. Create a new Pull Request.
 
+### Add More Backdoor
+To contribute by adding more backdoors:
+1. create a new folder under `payloads` directory.
+2. put your `jsp` file under the newly created directory (make it the same directory name).
+3. update `payloads_info.json` file with
+    1. description. 
+    2. supported operating system (try to make it universal though).
+    3. configurations: default host and port.
+    4. references: the payload origin or its creator credits.
 
 ## License
 
