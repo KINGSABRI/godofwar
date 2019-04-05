@@ -7,13 +7,12 @@ require 'fileutils'
 # GodOfWar
 require 'godofwar/version'
 require 'godofwar/builder'
-require 'godofwar/payload'
+require 'godofwar/payloads'
 require 'godofwar/extensions'
 require 'godofwar/utils'
 
 # Gems
 require 'zip'
-require 'tty/prompt'
 
 module GodOfWar
   class Error < StandardError; end

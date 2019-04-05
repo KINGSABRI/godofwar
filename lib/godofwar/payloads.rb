@@ -24,17 +24,25 @@ module GodOfWar
     attr_accessor :payload
 
     def initialize
-      @payloads_home = File.expand_path(File.join( '..', 'payloads'))
-      @payloads_db   = JSON.parse(File.read("#{@payloads_home}/payloads_info.json"))
+      @payloads_home =
+          File.absolute_path(
+              File.join('..', '..', '..', 'payloads'), __FILE__
+          )
+      @payloads_db   =
+          JSON.parse(
+              File.read(
+                  File.absolute_path(
+                      File.join(@payloads_home, 'payloads_info.json')
+                  )
+              )
+          )
     end
 
-    #
     # payloads_parse lists all payloads as [Payload] objects
     #
     # @return [Array<Payload>]
-    #
     def payloads_parse
-      @payloads_db.map do |payload, info |
+      @payloads_db.map do |payload, info|
         name = payload
         desc = info["desc"]
         os   = info["os"]
@@ -44,6 +52,16 @@ module GodOfWar
         path = File.absolute_path(File.join(@payloads_home, payload))
         Payload.new(name, desc, os, conf, url, ref, path)
       end
+    end
+
+    # Finds the payload from @payloads_db
+    #
+    # @param [String] payload
+    #   payload name
+    #
+    # @return [Payload] object
+    def find_payload(payload)
+      payloads_parse.find{|pay| pay.name == payload}
     end
 
     #
@@ -69,11 +87,6 @@ module GodOfWar
             "│       └── Local Path:  #{payload.path}"
       end
     end
-
-
-    def find_payload(payload)
-      payloads_parse.find{|pay| pay.name == payload}
-    end
   end
 end
 
@@ -85,7 +98,7 @@ if __FILE__ == $0
   # pp GodOfWar::Payloads::HOME
   payloads = GodOfWar::Payloads.new
   # pp payloads.payloads.map(&:name)
-  pp payload = payloads.payloads_parse.find{|payload| payload.name == 'reverse_shell_ui'}#.first
+  pp payload = payloads.payloads_db.find{|payload| payload.name == 'reverse_shell_ui'}#.first
   pp payload.name
   # puts payloads.list_payloads_tree
 end

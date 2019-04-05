@@ -3,6 +3,8 @@
 # GodOfWare - A command-line tool to generate war payloads for penetration testing / red teaming purposes.
 # @Author: KING SABRI - @KINGSABRI
 #
+lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'godofwar'
 
 options = OpenStruct.new(payload: nil, host: nil, port: nil,
@@ -30,8 +32,7 @@ option_parser.on('-o', "--output [FILE]",
                  "\t(default is the payload original name. check '-l/--list')") do |v|
   options.output = v
 end
-option_parser.on('-l', '--list', 'list all available payloads.') {|v| options.list = v}
-# option_parser.on('-v', '--version', 'Check current and latest version') { latest_version }
+option_parser.on('-l', '--list', 'list all available payloads.') { |v| options.list = v }
 option_parser.on('-h', '--help', 'Show this help message') {puts GodOfWar::Utils.banner , option_parser; exit!}
 
 begin
@@ -74,4 +75,3 @@ rescue Exception => e
   puts e.full_message
   puts "#{e}".error
 end
-
