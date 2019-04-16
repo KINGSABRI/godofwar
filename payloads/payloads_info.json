@@ -28,7 +28,7 @@
     "ref"   : ["unknown"]
   },
   "reverse_shell": {
-    "desc"  : "TCP reverse shell. LHOST and LPORT are hardcoded",
+    "desc"  : "TCP reverse shell, it runs once you brows the file. LHOST and LPORT are hardcoded",
     "os"    : "any",
     "conf"  : {"host": "attacker", "port": 4444},
     "url"   : "http://host:8080/reverse_shell/reverse_shell.jsp",
