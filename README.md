@@ -51,7 +51,7 @@ GodOfWar - Malicious Java WAR builder.
     - bind_shell
     - reverse_shell
     - reverse_shell_ui 
-- Configurable backdoor. (try `--host/-port`)
+- Configurable backdoor. (try `--host/--port`)
 - Control over payload name. 
   - To avoid malicious name after deployment to bypass URL name signatures.
 
