@@ -82,6 +82,8 @@ module GodOfWar
     end
 
     def set_payload(host, port)
+      puts "Setting up payload:".tell
+
       payload_file = File.join(@payload.path, "#{@payload.name}.jsp")
 
       if @payload.conf.empty?
@@ -90,11 +92,12 @@ module GodOfWar
         host = host.nil? ? @payload.conf["host"] : host
         port = port.nil? ? @payload.conf["port"] : port
         payload_raw = File.read(payload_file)
-                          .sub('HOSTHOST', "#{host}").sub('PORTPORT', "#{port}")
+                          .sub('HOSTHOST', "#{host}")
+                          .sub('PORTPORT', "#{port}")
       end
+      puts "#{@payload.name}.jsp ⟿ #{@output}.jsp".step_success
       File.write(File.join(@output, "#{@output}.jsp"), payload_raw)
-      puts "Setting up payload:".tell
-      puts "#{File.join(@war_dir, @payload.name)}.jsp".step_success
+      puts "#{File.join(@war_dir, @output)}.jsp".step_success
     end
 
     # build_war build the WAR file by recursively the source directory content then zip it
