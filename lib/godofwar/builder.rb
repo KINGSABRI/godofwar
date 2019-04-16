@@ -78,7 +78,7 @@ module GodOfWar
           MANIFEST
 
       File.write(manifest_mf_path, manifest_mf)
-      puts "#{File.join(@war_dir, 'META-INF', 'MANIFEST.MF')}".step_success
+      puts "#{manifest_mf_path}".step_success
     end
 
     def set_payload(host, port)
