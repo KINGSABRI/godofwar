@@ -71,20 +71,20 @@ module GodOfWar
     #
     def list_tree
       payloads_parse.map do |payload|
-        if payload.conf["true"]
-          payload.conf = payload.conf.values.first
+        if payload.conf.empty?
+          payload.conf = 'No Settings required!'
         else
-          payload.conf["false"] = 'No Settings required!'
+          payload.conf
         end
 
-        "├── " + "#{payload.name}\n".bold   +
-            "│   └── Information:\n"        +
-            "│       ├── Description: #{payload.desc}\n" +
-            "│       ├── OS:          #{payload.os}\n"   +
-            "│       ├── Settings:    #{payload.conf}\n" +
-            "│       ├── Usage:       #{payload.url}\n"  +
-            "│       ├── References:  #{payload.ref}\n"  +
-            "│       └── Local Path:  #{payload.path}"
+        "├── " + "#{payload.name}\n".bold            +
+        "│   └── Information:\n"                     +
+        "│       ├── Description: #{payload.desc}\n" +
+        "│       ├── OS:          #{payload.os}\n"   +
+        "│       ├── Settings:    #{payload.conf}\n" +
+        "│       ├── Usage:       #{payload.url}\n"  +
+        "│       ├── References:  #{payload.ref}\n"  +
+        "│       └── Local Path:  #{payload.path}"
       end
     end
   end
