@@ -3,35 +3,35 @@
     "desc"  : "Command execution via web interface",
     "os"    : "any",
     "conf"  : {},
-    "url"   : "http://host/cmd.jsp?cmd=whoami",
+    "url"   : "http://host:8080/cmd/cmd.jsp?cmd=whoami",
     "ref"   : ["https://github.com/danielmiessler/SecLists/tree/master/Payloads/laudanum-0.8/jsp"]
   },
   "filebrowser": {
     "desc"  : "Remote file browser, upload, download, unzip files and native command execution",
     "os"    :  "any",
     "conf"  : {},
-    "url"   : "http://host/filebrowser.jsp",
+    "url"   : "http://host:8080/filebrowser/filebrowser.jsp",
     "ref"   : ["http://www.vonloesch.de/filebrowser.html"]
   },
   "bind_shell": {
     "desc"  : "TCP bind shell",
     "os"    : "any",
     "conf"  : {"port": 4444},
-    "url"   : "http://host/reverse-shell.jsp",
+    "url"   : "http://host:8080/bind-shell/bind-shell.jsp",
     "ref"   : ["Metasploit - msfvenom -p java/jsp_shell_bind_tcp"]
   },
   "reverse_shell_ui": {
     "desc"  : "TCP reverse shell with a HTML form to set LHOST and LPORT from browser.",
     "os"    : "any",
     "conf"  : {"host": "attacker", "port": 4444},
-    "url"   : "http://host/reverse_shell_ui.jsp",
-    "ref"   : []
+    "url"   : "http://host:8080/reverse_shell_ui/reverse_shell_ui.jsp",
+    "ref"   : ["unknown"]
   },
   "reverse_shell": {
     "desc"  : "TCP reverse shell. LHOST and LPORT are hardcoded",
     "os"    : "any",
     "conf"  : {"host": "attacker", "port": 4444},
-    "url"   : "http://host/reverse_shell.jsp",
+    "url"   : "http://host:8080/reverse_shell/reverse_shell.jsp",
     "ref"   : ["unknown"]
   }
 }
