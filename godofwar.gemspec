@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["KINGSABRI"]
   spec.email         = ["king.sabri@gmail.com"]
 
-  spec.summary       = %q{Evil war builder for hackers with built-in war payloads.}
+  spec.summary       = %q{GodOfWar - Malicious Java WAR builder}
   spec.description   = %q{Evil war builder for hackers with built-in war payloads.}
   spec.homepage      = "https://github.com/KINGSABRI/godofwar"
   spec.license       = "MIT"
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables   = ['godofwar']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rubyzip'
+  spec.add_dependency 'rubyzip', '~> 1.2'
 
   spec.metadata["homepage_uri"]    = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/KINGSABRI/godofwar"
